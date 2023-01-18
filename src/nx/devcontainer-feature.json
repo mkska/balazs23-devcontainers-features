@@ -1,7 +1,7 @@
 {
     "name": "Nx (via npm)",
     "id": "nx",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Nx is a next generation build system with first class monorepo support and powerful integrations.",
     "documentationURL": "https://nx.dev",
     "options": {
