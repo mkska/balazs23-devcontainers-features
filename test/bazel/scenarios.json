@@ -1,0 +1,10 @@
+{
+    "version": {
+        "image": "ubuntu:focal",
+        "features": {
+            "bazel": {
+                "bazelisk": "v1.14.0"
+            }
+        }
+    }
+}
