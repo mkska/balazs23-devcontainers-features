@@ -52,7 +52,7 @@ install_bazelisk() {
     esac
 
     if [ "${BAZELISK_VERSION}" = "latest" ]; then
-        curl "https://api.github.com/repos/${BAZELISK_GIT_REPO}/releases/latest"
+        # curl "https://api.github.com/repos/${BAZELISK_GIT_REPO}/releases/latest"
         BAZELISK_VERSION=$(curl --silent "https://api.github.com/repos/${BAZELISK_GIT_REPO}/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
     fi
 
