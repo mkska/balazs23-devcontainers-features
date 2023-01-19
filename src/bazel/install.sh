@@ -31,7 +31,7 @@ check_packages() {
 }
 
 install_bazelisk() {
-    check_packages curl ca-certificates
+    check_packages curl ca-certificates grep sed
 
     arch="$(uname -m)"
     case "${arch}" in
@@ -52,13 +52,11 @@ install_bazelisk() {
     esac
 
     if [ "${BAZELISK_VERSION}" = "latest" ]; then
-        curl --silent "https://api.github.com/repos/${BAZELISK_GIT_REPO}/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
-        sleep 5
+        curl "https://api.github.com/repos/${BAZELISK_GIT_REPO}/releases/latest"
         BAZELISK_VERSION=$(curl --silent "https://api.github.com/repos/${BAZELISK_GIT_REPO}/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
     fi
 
     echo "(*) Installing Bazelisk $PLATFORM $ARCHITECTURE $BAZELISK_VERSION"
-    sleep 5
 
     curl -fSsL -o $BAZELISK_LOCAL_PATH "https://github.com/${BAZELISK_GIT_REPO}/releases/download/${BAZELISK_VERSION}/bazelisk-${PLATFORM}-${ARCHITECTURE}"
     chmod 0755 $BAZELISK_LOCAL_PATH
