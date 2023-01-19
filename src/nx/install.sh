@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# npm version for Dev Container CLI
+# nx version for Dev Container CLI
 NX_VERSION=${VERSION:-"latest"}
 
 # Check user
