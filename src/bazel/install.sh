@@ -6,8 +6,6 @@ BAZELISK_VERSION=${BAZELISK:-"latest"}
 BAZELISK_GIT_REPO="bazelbuild/bazelisk"
 BAZELISK_LOCAL_PATH="/usr/local/bin/bazelisk"
 
-BAZEL_VERSION=${VERSION:-"latest"}
-
 # Check user
 if [ "$(id -u)" -ne 0 ]; then
 	echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'
@@ -54,10 +52,13 @@ install_bazelisk() {
     esac
 
     if [ "${BAZELISK_VERSION}" = "latest" ]; then
+        curl --silent "https://api.github.com/repos/${BAZELISK_GIT_REPO}/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+        sleep 5
         BAZELISK_VERSION=$(curl --silent "https://api.github.com/repos/${BAZELISK_GIT_REPO}/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
     fi
 
     echo "(*) Installing Bazelisk $PLATFORM $ARCHITECTURE $BAZELISK_VERSION"
+    sleep 5
 
     curl -fSsL -o $BAZELISK_LOCAL_PATH "https://github.com/${BAZELISK_GIT_REPO}/releases/download/${BAZELISK_VERSION}/bazelisk-${PLATFORM}-${ARCHITECTURE}"
     chmod 0755 $BAZELISK_LOCAL_PATH
