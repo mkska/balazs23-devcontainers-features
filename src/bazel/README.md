@@ -7,7 +7,7 @@ Bazel is a fast, scalable, multi-language and extensible build system. For speci
 
 ```json
 "features": {
-    "ghcr.io/Balazs23/devcontainers-features/bazel:1": {}
+    "ghcr.io/mkska/balazs23-devcontainers-features/bazel:1": {}
 }
 ```
 
@@ -21,4 +21,4 @@ Bazel is a fast, scalable, multi-language and extensible build system. For speci
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/Balazs23/devcontainers-features/blob/main/src/bazel/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/mkska/balazs23-devcontainers-features/blob/main/src/bazel/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
