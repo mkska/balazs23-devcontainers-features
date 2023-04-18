@@ -60,6 +60,9 @@ install_bazelisk() {
 
     curl -fSsL -o $BAZELISK_LOCAL_PATH "https://github.com/${BAZELISK_GIT_REPO}/releases/download/${BAZELISK_VERSION}/bazelisk-${PLATFORM}-${ARCHITECTURE}"
     chmod 0755 $BAZELISK_LOCAL_PATH
+    
+    # Adds symlink as bazel to bazelisk
+    ln -s /usr/local/bin/bazelisk /usr/local/bin/bazel
 }
 
 install_bazelisk
